@@ -3,6 +3,5 @@ Content-Type: application/json
 
 {
   "text": "Ein Capybara ist gestern in einem Aufzug stecken geblieben.",
-  "sourceLanguage": "de_DE",
-  "targetLanguages": ["en_GB", "en_US", "fr", "es", "nl"]
+  "targetLanguages": [ "en_GB", "en_US", "fr", "es", "nl"]
 }

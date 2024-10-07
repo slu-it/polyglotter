@@ -1,0 +1,8 @@
+POST http://localhost:8080/translate
+Content-Type: application/json
+
+{
+  "sourceLanguage": "de_DE",
+  "targetLanguages": ["en_AU", "en_GB", "en_US", "fr", "es", "nl_NL"],
+  "text": "Ein Capybara ist gestern in einem Aufzug stecken geblieben."
+}

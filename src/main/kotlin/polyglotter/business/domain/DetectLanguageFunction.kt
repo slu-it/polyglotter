@@ -10,7 +10,7 @@ class DetectLanguageFunction(
 
     private val languageCodePattern = Regex("[a-z]{2}")
 
-    operator fun invoke(text: String): Locale {
+    operator fun invoke(text: String): Locale? {
         val result = executeAiTask(
             taskDescription = {
                 """
@@ -20,7 +20,7 @@ class DetectLanguageFunction(
                 
                 Rules:
                 - Output must be exactly two lowercase letters (e.g., "en", "de", "pt", "zh").
-                - If the language has no ISO 639-1 code or the text is too short/ambiguous to decide, output "?".
+                - If the language has no ISO 639-1 code or the text is too short/ambiguous to decide, output "unknown".
                 - For regional variants, return the base language (e.g., "pt" for pt-BR).
                 - For scripts, return the language code only (e.g., "zh" for Chinese, not script tags).
                 - If multiple languages appear, return the dominant one by character count.
@@ -33,7 +33,13 @@ class DetectLanguageFunction(
             input = text,
             temperature = 0.0,
         )
-        check(result matches languageCodePattern) { "[$result] is not a valid ISO 639-1 language code!" }
-        return Locale.of(result)
+
+        return when (result) {
+            "unknown" -> null
+            else -> {
+                check(result matches languageCodePattern) { "[$result] is not a valid ISO 639-1 language code!" }
+                Locale.of(result)
+            }
+        }
     }
 }

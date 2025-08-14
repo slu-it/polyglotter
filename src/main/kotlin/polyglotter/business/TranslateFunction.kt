@@ -3,6 +3,7 @@ package polyglotter.business
 import org.springframework.stereotype.Component
 import polyglotter.business.domain.DetectLanguageFunction
 import polyglotter.business.domain.TranslateTextFunction
+import polyglotter.business.exceptions.IndeterminableLanguageException
 import polyglotter.business.model.TranslationQuery
 import java.util.*
 import java.util.concurrent.CompletableFuture.supplyAsync
@@ -18,7 +19,9 @@ class TranslateFunction(
 
     operator fun invoke(query: TranslationQuery): Map<Locale, String> =
         translate(
-            sourceLanguage = query.sourceLanguage ?: detectLanguage(query.text),
+            sourceLanguage = query.sourceLanguage
+                ?: detectLanguage(query.text)
+                ?: throw IndeterminableLanguageException(query.text),
             targetLanguages = query.targetLanguages,
             text = query.text
         )

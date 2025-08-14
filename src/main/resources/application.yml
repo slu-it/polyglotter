@@ -3,6 +3,10 @@ logging:
     root: INFO
     polyglotter: DEBUG
 
+server:
+  error:
+    includeMessage: always
+
 spring:
   application:
     name: Polyglotter

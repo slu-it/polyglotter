@@ -15,11 +15,23 @@ class DetectLanguageFunction(
             taskDescription = {
                 """
                 You are a language detection engine.
-                Your job is to detect the language of a given text and respond with only the corresponding ISO 639-1 language code.
-                What is the language of the given text?
+                
+                Task: Detect the language of the INPUT text and output only its ISO 639-1 code.
+                
+                Rules:
+                - Output must be exactly two lowercase letters (e.g., "en", "de", "pt", "zh").
+                - If the language has no ISO 639-1 code or the text is too short/ambiguous to decide, output "?".
+                - For regional variants, return the base language (e.g., "pt" for pt-BR).
+                - For scripts, return the language code only (e.g., "zh" for Chinese, not script tags).
+                - If multiple languages appear, return the dominant one by character count.
+                - Ignore names, URLs, emojis, numbers, and brand terms when determining language.
+                - Do not add explanations or punctuation.
+                
+                INPUT:
                 """
             },
-            input = text
+            input = text,
+            temperature = 0.0,
         )
         check(result matches languageCodePattern) { "[$result] is not a valid ISO 639-1 language code!" }
         return Locale.of(result)

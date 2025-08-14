@@ -2,6 +2,7 @@ package polyglotter.business.domain
 
 import org.slf4j.LoggerFactory.getLogger
 import org.springframework.ai.chat.client.ChatClient
+import org.springframework.ai.openai.OpenAiChatOptions
 import org.springframework.stereotype.Component
 
 @Component
@@ -11,9 +12,13 @@ class ExecuteAiTaskFunction(
 
     private val log = getLogger(javaClass)
 
-    operator fun invoke(taskDescription: () -> String, input: String): String {
+    operator fun invoke(taskDescription: () -> String, input: String, temperature: Double): String {
         val system = taskDescription().trimIndent()
+        val options = OpenAiChatOptions.builder()
+            .temperature(temperature)
+            .build()
         val result = chatClient.prompt()
+            .options(options)
             .system(system)
             .user(input)
             .call()

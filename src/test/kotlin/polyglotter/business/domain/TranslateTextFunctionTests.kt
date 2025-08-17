@@ -62,7 +62,7 @@ class TranslateTextFunctionTests {
     @AiIntegrationTest
     @Import(TranslateTextFunction::class)
     inner class IntegrationTests(
-        @Autowired private val cut: TranslateTextFunction
+        @param:Autowired private val cut: TranslateTextFunction
     ) {
 
         @Test

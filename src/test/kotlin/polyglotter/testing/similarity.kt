@@ -10,6 +10,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
 
+@Suppress("ReturnCount")
 fun similarity(a: String, b: String): Double {
     if (a == b) return 1.0
 

@@ -2,6 +2,7 @@ package polyglotter
 
 import java.util.*
 
+@Suppress("MayBeConst")
 object Examples {
     val german = Locale.of("de")
     val germanText = "Ein Capybara ist in einem Aufzug stecken geblieben."

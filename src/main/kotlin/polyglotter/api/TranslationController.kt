@@ -22,4 +22,3 @@ class TranslationController(
 
     data class TranslationResponse(val translations: Map<Locale, String>)
 }
-

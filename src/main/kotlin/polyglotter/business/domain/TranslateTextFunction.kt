@@ -9,6 +9,7 @@ class TranslateTextFunction(
     private val executeAiTask: ExecuteAiTaskFunction
 ) {
 
+    @Suppress("MaximumLineLength")
     operator fun invoke(sourceLanguage: Locale, targetLanguage: Locale, text: String): String {
         val sld = description(sourceLanguage)
         val tld = description(targetLanguage)

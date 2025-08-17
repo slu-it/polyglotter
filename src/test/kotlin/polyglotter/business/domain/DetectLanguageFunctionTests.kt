@@ -53,7 +53,7 @@ class DetectLanguageFunctionTests {
     @AiIntegrationTest
     @Import(DetectLanguageFunction::class)
     inner class IntegrationTests(
-        @Autowired private val cut: DetectLanguageFunction
+        @param:Autowired private val cut: DetectLanguageFunction
     ) {
 
         @Test

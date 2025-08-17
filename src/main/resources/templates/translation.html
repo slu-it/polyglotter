@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Polyglotter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <script src="../static/scripts/input-counter.js" th:src="@{/scripts/input-counter.js}"></script>
+</head>
+<body>
+<main class="container">
+    <img src="../static/images/logo.png" th:src="@{/images/logo.png}" alt="Polyglotter"
+         style="max-width: auto; height: 200px;"/>
+    <div class="headline">Polyglotter</div>
+    <form th:action="@{/}" th:object="${form}" method="post">
+        <div class="source-area">
+            <div class="language-selection">
+                <label for="sourceLanguage">Source</label>
+                <select id="sourceLanguage" th:field="*{source}">
+                    <option value="?" selected>- Auto Detect -</option>
+                    <option th:each="language : ${config.languages}"
+                            th:value="${language}"
+                            th:text="${language.displayName}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <textarea id="input-text"
+                          class="text"
+                          dir="auto"
+                          rows="8" cols="80"
+                          th:field="*{text}"
+                          th:attr="maxlength=${config.maxInputChars}"
+                          placeholder="Enter text here">
+                </textarea>
+            </div>
+            <div class="input-counter">
+                <span id="input-count">0</span>
+                <span>/</span>
+                <span id="input-count-max" th:text="${config.maxInputChars}">500</span>
+            </div>
+        </div>
+        <div class="translation-area">
+            <div class="language-selection">
+                <label for="targetLanguage">Translation</label>
+                <select id="targetLanguage" th:field="*{target}">
+                    <option th:each="language : ${config.languages}"
+                            th:value="${language}"
+                            th:text="${language.displayName}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <textarea class="text"
+                          rows="8" cols="80"
+                          th:field="*{result}"
+                          th:attr="dir=${form.target.direction}, lang=${form.target.language}"
+                          readonly>
+                </textarea>
+            </div>
+        </div>
+        <div class="submit-area">
+            <button type="submit">Translate</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

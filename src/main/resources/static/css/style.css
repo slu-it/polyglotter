@@ -1,0 +1,75 @@
+body {
+  font-size: 1.25em;
+  text-align: center;
+  background-color: #B9D2E1;
+}
+
+.container {
+  width: 100% - 2rem;
+  font-family: "Arial", "Helvetica", "sans-serif";
+}
+
+.headline {
+  font-size: 3em;
+  font-family: "Brush Script MT", "Lucida Handwriting", "cursive";
+  margin-bottom: 0.5em;
+}
+
+.source-area {
+  width: min(960px, 90%);
+  margin-inline: auto;
+  margin-bottom: 2em;
+}
+.source-area .text {
+  background-color: #FFFFFF;
+}
+
+.translation-area {
+  width: min(960px, 90%);
+  margin-inline: auto;
+  margin-bottom: 2em;
+}
+.translation-area .text {
+  background-color: #EFEFEF;
+}
+
+.language-selection {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.language-selection label {
+  width: 30%;
+  text-align: left;
+  font-family: inherit;
+  font-weight: 1000;
+  font-size: 1.25em;
+}
+.language-selection select {
+  width: 70%;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #FFFFFF;
+}
+
+.text {
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: border-box;
+}
+
+.submit-area {
+  margin-bottom: 2em;
+}
+.submit-area button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  padding: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+}

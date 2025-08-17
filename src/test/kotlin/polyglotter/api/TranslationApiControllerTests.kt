@@ -18,8 +18,8 @@ import polyglotter.business.TranslateFunction
 import polyglotter.business.model.TranslationQuery
 
 @MockkBean(TranslateFunction::class)
-@WebMvcTest(TranslationController::class)
-class TranslationControllerTests(
+@WebMvcTest(TranslationApiController::class)
+class TranslationApiControllerTests(
     @param:Autowired private val translate: TranslateFunction,
     @param:Autowired private val mockMvc: MockMvc,
 ) {

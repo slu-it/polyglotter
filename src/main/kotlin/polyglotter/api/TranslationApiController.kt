@@ -10,7 +10,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/api/translate")
-class TranslationController(
+class TranslationApiController(
     private val translate: TranslateFunction,
 ) {
 

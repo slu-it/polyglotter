@@ -2,7 +2,7 @@
 
 A simple AI-based translation service.
 
-image:.assets/logo.png[Glotter,width=300]
+image:src/main/resources/static/images/logo.png[Glotter,width=300]
 
 == API
 
@@ -52,19 +52,12 @@ Content-Type: application/json
 
 Polyglotter is available as a Container Image from my link:https://github.com/slu-it/polyglotter/pkgs/container/polyglotter[GitHub Packages].
 
-.pull and start
-[source]
-----
-docker pull ghcr.io/slu-it/polyglotter:master
-docker run --rm -e OPENAI_API_KEY=your-api-key ghcr.io/slu-it/polyglotter:master
-----
-
 .Docker Compose: docker-compose.yml
 [source,yaml]
 ----
 services:
   polyglotter:
-    image: ghcr.io/slu-it/polyglotter:master
+    image: ghcr.io/slu-it/polyglotter:latest
     pull_policy: always
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}

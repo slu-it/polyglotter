@@ -1,6 +1,6 @@
 package polyglotter.business.model
 
-import java.util.Locale
+import java.util.*
 
 data class TranslationQuery(
     val text: String,
@@ -10,6 +10,5 @@ data class TranslationQuery(
     init {
         require(text.isNotBlank()) { "The text to be translated is not allowed to be blank!" }
         require(targetLanguages.isNotEmpty()) { "You need to provide at least one target language!" }
-        require(targetLanguages.all { !it.language.isNullOrBlank() }) { "Target LANGUAGES must be specified!" }
     }
 }

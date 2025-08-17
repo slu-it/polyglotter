@@ -31,7 +31,6 @@ class TranslateFunction(
         val translations = targetLanguages.sortedBy { it.language }
             .map { language -> language to asyncTranslate(sourceLanguage, language, text) }
             .associate { (language, supplier) -> language to supplier.get() }
-
         return original + translations
     }
 

@@ -9,7 +9,7 @@ class TranslateTextFunction(
     private val executeAiTask: ExecuteAiTaskFunction
 ) {
 
-    fun translate(sourceLanguage: Locale, targetLanguage: Locale, text: String): String {
+    operator fun invoke(sourceLanguage: Locale, targetLanguage: Locale, text: String): String {
         val sld = description(sourceLanguage)
         val tld = description(targetLanguage)
 

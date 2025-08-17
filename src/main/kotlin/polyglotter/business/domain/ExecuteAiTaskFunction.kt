@@ -13,28 +13,25 @@ class ExecuteAiTaskFunction(
     private val log = getLogger(javaClass)
 
     operator fun invoke(taskDescription: () -> String, input: String, temperature: Double): String {
-        val system = taskDescription().trimIndent()
         val options = OpenAiChatOptions.builder()
             .temperature(temperature)
             .build()
+        val system = taskDescription().trimIndent()
+        val user = input.trim()
+
         val result = chatClient.prompt()
             .options(options)
             .system(system)
-            .user(input)
+            .user(user)
             .call()
             .content()
-        logInteraction(system = system, user = input, result = result)
+
+        logInteraction(system = system, user = user, result = result)
         check(result != null) { "AI did not return a result!" }
         return result
     }
 
     private fun logInteraction(system: String, user: String, result: String?) {
-        val message = buildString {
-            appendLine()
-            appendLine("SYSTEM : $system")
-            appendLine("USER   : $user")
-            appendLine("RESULT : $result")
-        }
-        log.debug(message)
+        log.debug("SYSTEM:\n{}\n\nUSER:\n{}\n\nRESULT:\n{}\n\n", system, user, result)
     }
 }

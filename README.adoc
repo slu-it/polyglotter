@@ -4,6 +4,50 @@ A simple AI-based translation service.
 
 image:.assets/logo.png[Glotter,width=300]
 
+== API
+
+=== Request
+
+[source]
+----
+POST http://localhost:8080/api/translate
+Content-Type: application/json
+----
+
+.define source language
+[source,json]
+----
+{
+  "text": "Ein Capybara geht noch schnell vor dem Feiertag einkaufen.",
+  "sourceLanguage": "de",
+  "targetLanguages": ["en_US", "es"]
+}
+----
+
+.auto-detect source language
+[source,json]
+----
+{
+  "text": "Ein Capybara geht noch schnell vor dem Feiertag einkaufen.",
+  "targetLanguages": ["en_US", "es"]
+}
+----
+
+=== Response
+
+[source,json]
+----
+{
+  "translations": {
+    "de": "Ein Capybara geht noch schnell vor dem Feiertag einkaufen.",
+    "en_US": "A capybara goes shopping quickly before the holiday.",
+    "es": "Un capibara va de compras rápidamente antes del día festivo."
+  }
+}
+----
+
+
+
 == Docker
 
 Polyglotter is available as a Container Image from my link:https://github.com/slu-it/polyglotter/pkgs/container/polyglotter[GitHub Packages].

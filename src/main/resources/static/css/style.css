@@ -9,10 +9,18 @@ body {
   font-family: "Arial", "Helvetica", "sans-serif";
 }
 
-.headline {
+.header {
   font-size: 3em;
   font-family: "Brush Script MT", "Lucida Handwriting", "cursive";
   margin-bottom: 0.5em;
+}
+.header img {
+  max-width: auto;
+  height: 4em;
+}
+.header h1 {
+  font-size: 1em;
+  margin-top: -0.5em;
 }
 
 .source-area {
@@ -60,7 +68,8 @@ body {
   background-color: #FFFFFF;
 }
 
-.text {
+.textarea {
+  height: 10em;
   width: 100%;
   font-family: inherit;
   font-size: inherit;

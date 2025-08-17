@@ -9,7 +9,6 @@ data class TranslateForm(
     var text: String = "",
     var source: Language? = null,
     var target: Language = Language("en"),
-    var result: String = "",
 )
 
 @Suppress("MemberNameEqualsClassName")
@@ -31,7 +30,7 @@ data class Language(val locale: Locale) {
 @Component
 class StringToLanguageConverter : Converter<String, Language> {
     override fun convert(source: String): Language? {
-        if (source == "?") return null
-        return StringUtils.parseLocale(source)?.let(::Language)
+        if (source == "") return null
+        return StringUtils.parseLocale(source)?.let(::Language) ?: error("invalid locale: $source")
     }
 }

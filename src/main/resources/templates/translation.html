@@ -9,15 +9,16 @@
 </head>
 <body>
 <main class="container">
-    <img src="../static/images/logo.png" th:src="@{/images/logo.png}" alt="Polyglotter"
-         style="max-width: auto; height: 200px;"/>
-    <div class="headline">Polyglotter</div>
-    <form th:action="@{/}" th:object="${form}" method="post">
+    <div class="header">
+        <img src="../static/images/logo.png" th:src="@{/images/logo.png}" alt="Logo"/>
+        <h1>Polyglotter</h1>
+    </div>
+    <form method="post" th:action="@{/}" th:object="${form}">
         <div class="source-area">
             <div class="language-selection">
                 <label for="sourceLanguage">Source</label>
                 <select id="sourceLanguage" th:field="*{source}">
-                    <option value="?" selected>- Auto Detect -</option>
+                    <option value="" selected>- Auto Detect -</option>
                     <option th:each="language : ${config.languages}"
                             th:value="${language}"
                             th:text="${language.displayName}">
@@ -26,13 +27,11 @@
             </div>
             <div>
                 <textarea id="input-text"
-                          class="text"
+                          class="textarea"
+                          placeholder="Enter the text to be translated here."
                           dir="auto"
-                          rows="8" cols="80"
                           th:field="*{text}"
-                          th:attr="maxlength=${config.maxInputChars}"
-                          placeholder="Enter text here">
-                </textarea>
+                          th:attr="maxlength=${config.maxInputChars}"></textarea>
             </div>
             <div class="input-counter">
                 <span id="input-count">0</span>
@@ -51,12 +50,11 @@
                 </select>
             </div>
             <div>
-                <textarea class="text"
-                          rows="8" cols="80"
-                          th:field="*{result}"
+                <textarea class="textarea"
+                          placeholder="Click on 'Translate' to get a translation for the text you entered."
+                          th:text="${result}"
                           th:attr="dir=${form.target.direction}, lang=${form.target.language}"
-                          readonly>
-                </textarea>
+                          readonly></textarea>
             </div>
         </div>
         <div class="error-message" th:if="${error != null}" th:text="${error}">Oops</div>

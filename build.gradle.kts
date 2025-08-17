@@ -69,6 +69,11 @@ detekt {
     config.setFrom("$projectDir/detekt.yml")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+tasks {
+    bootJar {
+        archiveFileName = "application.jar"
+    }
+    withType<Test> {
+        useJUnitPlatform()
+    }
 }

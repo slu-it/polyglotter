@@ -23,11 +23,16 @@ body {
 .source-area .text {
   background-color: #FFFFFF;
 }
+.source-area .input-counter {
+  font-size: 0.75em;
+  text-align: right;
+  margin-right: 1em;
+}
 
 .translation-area {
   width: min(960px, 90%);
   margin-inline: auto;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 .translation-area .text {
   background-color: #EFEFEF;
@@ -72,4 +77,9 @@ body {
   padding: 0.5em;
   padding-left: 2em;
   padding-right: 2em;
+  margin-top: 1em;
+}
+
+.error-message {
+  color: #FF0000;
 }

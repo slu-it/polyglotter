@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import polyglotter.business.TranslateFunction
+import polyglotter.business.exceptions.IndeterminableLanguageException
 import polyglotter.business.model.TranslationQuery
 
 @Controller
@@ -17,13 +18,15 @@ class UiController(
 
     @GetMapping
     fun init(model: Model): String {
-        model.configurationAttributes()
+        model.defaultAttributes()
         model.addAttribute("form", TranslateForm())
         return "translation"
     }
 
     @PostMapping
     fun translate(@ModelAttribute("form") form: TranslateForm, model: Model): String {
+        model.defaultAttributes()
+
         val sourceLanguage = form.source?.locale
         val targetLanguage = form.target.locale
 
@@ -33,17 +36,21 @@ class UiController(
             targetLanguages = setOf(targetLanguage)
         )
 
-        val translations = translate(query)
+        try {
+            val translations = translate(query)
+            form.source = (translations.keys - targetLanguage).firstOrNull()?.let(::Language)
+            form.result = translations.getValue(targetLanguage)
+        } catch (e: IndeterminableLanguageException) {
+            model.addAttribute("error", e.message)
+            form.result = ""
+        }
 
-        form.source = (translations.keys - targetLanguage).firstOrNull()?.let(::Language)
-        form.result = translations.getValue(targetLanguage)
-
-        model.configurationAttributes()
         model.addAttribute("form", form)
         return "translation"
     }
 
-    private fun Model.configurationAttributes() {
+    private fun Model.defaultAttributes() {
         addAttribute("config", UiConfig)
+        addAttribute("error", null)
     }
 }

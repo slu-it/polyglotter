@@ -59,6 +59,7 @@
                 </textarea>
             </div>
         </div>
+        <div class="error-message" th:if="${error != null}" th:text="${error}">Oops</div>
         <div class="submit-area">
             <button type="submit">Translate</button>
         </div>

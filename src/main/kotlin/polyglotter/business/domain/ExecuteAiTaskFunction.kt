@@ -32,6 +32,6 @@ class ExecuteAiTaskFunction(
     }
 
     private fun logInteraction(system: String, user: String, result: String?) {
-        log.debug("SYSTEM:\n{}\n\nUSER:\n{}\n\nRESULT:\n{}\n\n", system, user, result)
+        log.debug("Model Interaction\nSYSTEM:\n{}\n\nUSER:\n{}\n\nRESULT:\n{}\n\n", system, user, result)
     }
 }

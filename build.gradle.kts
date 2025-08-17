@@ -17,8 +17,13 @@ repositories {
 
 dependencyManagement {
     imports {
+        mavenBom("io.kotest:kotest-bom:5.9.1")
         mavenBom("org.jetbrains.kotlin:kotlin-bom:2.2.0")
+        mavenBom("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2")
         mavenBom("org.springframework.ai:spring-ai-bom:1.0.1")
+    }
+    dependencies {
+        dependency("io.mockk:mockk-jvm:1.14.5")
     }
 }
 
@@ -29,9 +34,12 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-    testImplementation("io.kotest:kotest-assertions-core:5.9.1")
-    testImplementation("io.mockk:mockk-jvm:1.14.5")
+    testImplementation("io.kotest:kotest-assertions-core")
+    testImplementation("io.kotest:kotest-property")
+    testImplementation("io.mockk:mockk-jvm")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

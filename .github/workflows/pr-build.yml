@@ -26,6 +26,8 @@ jobs:
           cache-read-only: true
           gradle-version: wrapper
       - name: Gradle Build
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           chmod +x gradlew
           ./gradlew clean build

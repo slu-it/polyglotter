@@ -36,5 +36,5 @@ class TranslateFunction(
     }
 
     private fun asyncTranslate(sourceLanguage: Locale, language: Locale, text: String) =
-        supplyAsync({ translateText.translate(sourceLanguage, language, text) }, executor)
+        supplyAsync({ translateText(sourceLanguage, language, text) }, executor)
 }

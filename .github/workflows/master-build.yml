@@ -1,0 +1,30 @@
+name: "master-build"
+run-name: "Building 'master' branch."
+
+on:
+  push:
+    branches: [ "master" ]
+
+concurrency:
+  group: "master-build"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: wrapper
+      - name: Gradle Build
+        run: |
+          chmod +x gradlew
+          ./gradlew clean build

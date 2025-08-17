@@ -24,6 +24,7 @@ dependencyManagement {
     }
     dependencies {
         dependency("io.mockk:mockk-jvm:1.14.5")
+        dependency("com.ninja-squad:springmockk:4.0.2")
     }
 }
 
@@ -34,6 +35,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
+    testImplementation("com.ninja-squad:springmockk")
     testImplementation("io.kotest:kotest-assertions-core")
     testImplementation("io.kotest:kotest-property")
     testImplementation("io.mockk:mockk-jvm")

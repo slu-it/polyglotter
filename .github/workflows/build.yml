@@ -1,12 +1,14 @@
-name: "master-build"
+name: "build"
 run-name: "Building 'master' branch."
 
 on:
   push:
     branches: [ "master" ]
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
 
 concurrency:
-  group: "master-build"
+  group: "build"
   cancel-in-progress: false
 
 permissions:
@@ -59,3 +61,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          platforms: linux/amd64,linux/arm64

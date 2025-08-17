@@ -2,5 +2,39 @@
 
 A simple AI-based translation service.
 
-image:.assets/logo.png[Glotter,width=300,float="left",align="center"]
+image:.assets/logo.png[Glotter,width=300]
 
+== Docker
+
+Polyglotter is available as a Container Image from my link:https://github.com/slu-it/polyglotter/pkgs/container/polyglotter[GitHub Packages].
+
+.pull and start
+[source]
+----
+docker pull ghcr.io/slu-it/polyglotter:master
+docker run --rm -e OPENAI_API_KEY=your-api-key ghcr.io/slu-it/polyglotter:master
+----
+
+.Docker Compose: docker-compose.yml
+[source,yaml]
+----
+services:
+  polyglotter:
+    image: ghcr.io/slu-it/polyglotter:master
+    pull_policy: always
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # optional configuration - only specify to override
+      - OPENAI_CHAT_MODEL=gpt-4o
+      - LOG_LEVEL_DEFAULT=info
+      - LOG_LEVEL_APPLICATION=info
+    ports:
+      - "8080:8080"
+----
+
+.Docker Compose: .env
+[source]
+----
+# .env
+OPENAI_API_KEY=your-api-key
+----

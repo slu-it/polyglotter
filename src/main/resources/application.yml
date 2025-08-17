@@ -1,7 +1,7 @@
 logging:
   level:
-    root: INFO
-    polyglotter: DEBUG
+    root: ${LOG_LEVEL_DEFAULT:info}
+    polyglotter: ${LOG_LEVEL_APPLICATION:info}
 
 server:
   error:
@@ -9,14 +9,14 @@ server:
 
 spring:
   application:
-    name: Polyglotter
+    name: polyglotter
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
       chat:
         enabled: true
         options:
-          model: gpt-4o
+          model: ${OPENAI_CHAT_MODEL:gpt-4o}
   threads:
     virtual:
       enabled: true

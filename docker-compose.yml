@@ -1,0 +1,8 @@
+services:
+  polyglotter:
+    image: ghcr.io/slu-it/polyglotter:master
+    pull_policy: always
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    ports:
+      - "8080:8080"

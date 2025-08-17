@@ -2,5 +2,5 @@
 
 A simple AI-based translation service.
 
-image:assets/logo.png[Glotter,width=300,float="left",align="center"]
+image:.assets/logo.png[Glotter,width=300,float="left",align="center"]
 

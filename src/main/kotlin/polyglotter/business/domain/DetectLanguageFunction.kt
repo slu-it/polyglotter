@@ -5,13 +5,13 @@ import java.util.*
 
 @Component
 class DetectLanguageFunction(
-    private val executeAiTask: ExecuteAiTaskFunction
+    private val executeAiTaskWithTextInput: ExecuteAiTaskWithTextInputFunction
 ) {
 
     private val languageCodePattern = Regex("[a-z]{2}")
 
     operator fun invoke(text: String): Locale? {
-        val result = executeAiTask(
+        val result = executeAiTaskWithTextInput(
             taskDescription = {
                 """
                 You are a language detection engine.
@@ -26,8 +26,6 @@ class DetectLanguageFunction(
                 - If multiple languages appear, return the dominant one by character count.
                 - Ignore names, URLs, emojis, numbers, and brand terms when determining language.
                 - Do not add explanations or punctuation.
-                
-                INPUT:
                 """
             },
             input = text,

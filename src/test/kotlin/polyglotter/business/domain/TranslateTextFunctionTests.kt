@@ -26,18 +26,18 @@ class TranslateTextFunctionTests {
     @Nested
     inner class FunctionalTests {
 
-        private val executeAiTask: ExecuteAiTaskFunction = mockk()
-        private val cut = TranslateTextFunction(executeAiTask)
+        private val executeAiTaskWithTextInput: ExecuteAiTaskWithTextInputFunction = mockk()
+        private val cut = TranslateTextFunction(executeAiTaskWithTextInput)
 
         @Test
         fun `returns the model result as the translation`() {
-            every { executeAiTask(any(), any(), any()) } returns englishGbText
+            every { executeAiTaskWithTextInput(any(), any(), any()) } returns englishGbText
             cut(german, englishGb, germanText) shouldBe englishGbText
         }
 
         @Test
         fun `specifies source and target language without country if unavailable`() {
-            every { executeAiTask(any(), any(), any()) } returns spanishText
+            every { executeAiTaskWithTextInput(any(), any(), any()) } returns spanishText
             cut(german, spanish, germanText)
             val taskDescription = verifyModelCallAndReturnTaskDescription()
             taskDescription shouldContain "German → Spanish"
@@ -45,7 +45,7 @@ class TranslateTextFunctionTests {
 
         @Test
         fun `specifies source and target language with country if available`() {
-            every { executeAiTask(any(), any(), any()) } returns englishUsText
+            every { executeAiTaskWithTextInput(any(), any(), any()) } returns englishUsText
             cut(englishGb, englishUs, englishGbText)
             val taskDescription = verifyModelCallAndReturnTaskDescription()
             taskDescription shouldContain "English (United Kingdom) → English (United States)"
@@ -53,7 +53,7 @@ class TranslateTextFunctionTests {
 
         private fun verifyModelCallAndReturnTaskDescription(): String {
             val taskDescriptionSlot = slot<Function0<String>>()
-            verify { executeAiTask(capture(taskDescriptionSlot), any(), any()) }
+            verify { executeAiTaskWithTextInput(capture(taskDescriptionSlot), any(), any()) }
             return taskDescriptionSlot.captured()
         }
     }

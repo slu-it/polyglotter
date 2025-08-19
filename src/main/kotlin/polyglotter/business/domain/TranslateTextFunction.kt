@@ -6,7 +6,7 @@ import java.util.Locale.ENGLISH
 
 @Component
 class TranslateTextFunction(
-    private val executeAiTask: ExecuteAiTaskFunction
+    private val executeAiTaskWithTextInput: ExecuteAiTaskWithTextInputFunction
 ) {
 
     @Suppress("MaximumLineLength")
@@ -14,7 +14,7 @@ class TranslateTextFunction(
         val sld = description(sourceLanguage)
         val tld = description(targetLanguage)
 
-        val result = executeAiTask(
+        val result = executeAiTaskWithTextInput(
             taskDescription = {
                 $$"""
                 You are a $$sld → $$tld translator.
@@ -31,8 +31,6 @@ class TranslateTextFunction(
                 - If parts are already in $$tld, leave them unchanged.
                 - If $$sld equals $$tld, convert to the target locale’s conventions.
                 - Prefer natural phrasing over literal when choices conflict.
-                
-                INPUT:
                 """
             },
             input = text,

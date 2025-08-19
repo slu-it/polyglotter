@@ -62,7 +62,7 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       # optional configuration - only specify to override
-      - OPENAI_CHAT_MODEL=gpt-4o
+      - OPENAI_CHAT_MODEL=gpt-4.1
       - LOG_LEVEL_DEFAULT=info
       - LOG_LEVEL_APPLICATION=info
     ports:

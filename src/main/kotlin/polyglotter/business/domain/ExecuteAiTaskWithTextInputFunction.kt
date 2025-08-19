@@ -6,7 +6,7 @@ import org.springframework.ai.openai.OpenAiChatOptions
 import org.springframework.stereotype.Component
 
 @Component
-class ExecuteAiTaskFunction(
+class ExecuteAiTaskWithTextInputFunction(
     private val chatClient: ChatClient
 ) {
 
@@ -17,7 +17,12 @@ class ExecuteAiTaskFunction(
             .temperature(temperature)
             .build()
         val system = taskDescription().trimIndent()
-        val user = input.trim()
+        val user = buildString {
+            appendLine("INPUT")
+            appendLine("----")
+            appendLine(input.trim())
+            appendLine("----")
+        }
 
         val result = chatClient.prompt()
             .options(options)

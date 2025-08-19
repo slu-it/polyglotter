@@ -10,5 +10,5 @@ import java.lang.annotation.Inherited
 @Inherited
 @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".+")
 @SpringBootTest(classes = [AiConfiguration::class])
-@Import(ExecuteAiTaskFunction::class)
+@Import(ExecuteAiTaskWithTextInputFunction::class)
 annotation class AiIntegrationTest

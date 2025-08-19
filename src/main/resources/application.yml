@@ -16,7 +16,7 @@ spring:
       chat:
         enabled: true
         options:
-          model: ${OPENAI_CHAT_MODEL:gpt-4o}
+          model: ${OPENAI_CHAT_MODEL:gpt-4.1}
   threads:
     virtual:
       enabled: true

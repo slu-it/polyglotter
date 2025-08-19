@@ -20,8 +20,8 @@ class DetectLanguageFunctionTests {
     @Nested
     inner class FunctionalTests {
 
-        private val executeAiTask: ExecuteAiTaskFunction = mockk()
-        private val cut = DetectLanguageFunction(executeAiTask)
+        private val executeAiTaskWithTextInput: ExecuteAiTaskWithTextInputFunction = mockk()
+        private val cut = DetectLanguageFunction(executeAiTaskWithTextInput)
 
         @Test
         fun `if the model is returning 'unknown', it is mapped to null`() {
@@ -45,7 +45,7 @@ class DetectLanguageFunctionTests {
         }
 
         private fun stubAiToRespondWith(result: String) {
-            every { executeAiTask(any(), any(), any()) } returns result
+            every { executeAiTaskWithTextInput(any(), any(), any()) } returns result
         }
     }
 

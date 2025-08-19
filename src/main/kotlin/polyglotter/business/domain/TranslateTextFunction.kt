@@ -29,7 +29,6 @@ class TranslateTextFunction(
                 - Do not translate or alter: URLs, emails, code, file paths, numbers, units, variables/placeholders ({name}, {{handlebars}}, $VAR), hashtags, @mentions, emojis.
                 - Keep proper names and brand names unless a well-established localized form exists.
                 - If parts are already in $$tld, leave them unchanged.
-                - If $$sld equals $$tld, convert to the target locale’s conventions.
                 - Prefer natural phrasing over literal when choices conflict.
                 """
             },

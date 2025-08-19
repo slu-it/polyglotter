@@ -8,7 +8,10 @@ import io.kotest.property.arbitrary.string
 import io.kotest.property.forAll
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory
 import kotlin.random.Random
+
+private val log = LoggerFactory.getLogger("polyglotter.testing.similarity")
 
 @Suppress("ReturnCount")
 fun similarity(a: String, b: String): Double {
@@ -17,7 +20,9 @@ fun similarity(a: String, b: String): Double {
     val maxLen = maxOf(a.length, b.length)
     if (maxLen == 0) return 1.0
 
-    return 1.0 - (levenshteinDistance(a, b).toDouble() / maxLen.toDouble())
+    val similarity = 1.0 - (levenshteinDistance(a, b).toDouble() / maxLen.toDouble())
+    log.debug("Not a perfect match!\nA:\n{}\n\nB:\n{}", a, b)
+    return similarity
 }
 
 fun levenshteinDistance(a: String, b: String): Int {

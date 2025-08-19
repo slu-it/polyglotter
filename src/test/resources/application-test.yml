@@ -1,3 +1,7 @@
+logging:
+  level:
+    polyglotter: debug
+
 spring:
   ai:
     openai:

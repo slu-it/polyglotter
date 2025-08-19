@@ -69,14 +69,14 @@ class TranslateTextFunctionTests {
         fun `translates from German to English UK`() {
             val translation = cut(german, englishGb, germanText)
             val similarity = similarity(translation, englishGbText)
-            similarity shouldBeGreaterThan 0.9
+            similarity shouldBeGreaterThan 0.95
         }
 
         @Test
         fun `translates from English UK to English US`() {
             val translation = cut(englishGb, englishUs, englishGbText)
             val similarity = similarity(translation, englishUsText)
-            similarity shouldBeGreaterThan 0.9
+            similarity shouldBeGreaterThan 0.95
         }
     }
 }

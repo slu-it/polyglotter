@@ -3,11 +3,13 @@ package polyglotter.business.domain
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.context.annotation.Import
+import org.springframework.test.context.ActiveProfiles
 import polyglotter.config.AiConfiguration
 import java.lang.annotation.Inherited
 
 @Retention
 @Inherited
+@ActiveProfiles("test")
 @EnabledIfEnvironmentVariable(named = "OPENAI_API_KEY", matches = ".+")
 @SpringBootTest(classes = [AiConfiguration::class])
 @Import(ExecuteAiTaskWithTextInputFunction::class)

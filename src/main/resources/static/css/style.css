@@ -1,46 +1,46 @@
 body {
-  font-size: 1.25em;
+  font-size: 1.25rem;
   text-align: center;
   background-color: #B9D2E1;
 }
 
 .container {
-  width: 100% - 2rem;
+  width: 100%;
   font-family: "Arial", "Helvetica", "sans-serif";
 }
 
 .header {
-  font-size: 3em;
   font-family: "Brush Script MT", "Lucida Handwriting", "cursive";
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 .header img {
   max-width: auto;
-  height: 4em;
+  height: 11rem;
 }
 .header h1 {
-  font-size: 1em;
-  margin-top: -0.5em;
+  font-size: 4rem;
+  margin-top: -1.5rem;
+  margin-bottom: 0rem;
 }
 
 .source-area {
   width: min(960px, 90%);
   margin-inline: auto;
-  margin-bottom: 2em;
+  margin-top: 2rem;
 }
 .source-area .text {
   background-color: #FFFFFF;
 }
 .source-area .input-counter {
-  font-size: 0.75em;
+  font-size: 0.75rem;
   text-align: right;
-  margin-right: 1em;
+  margin-right: 1rem;
 }
 
 .translation-area {
   width: min(960px, 90%);
   margin-inline: auto;
-  margin-bottom: 1em;
+  margin-top: 2rem;
 }
 .translation-area .text {
   background-color: #EFEFEF;
@@ -49,46 +49,47 @@ body {
 .language-selection {
   display: flex;
   flex-wrap: nowrap;
-  gap: 0.5rem;
+  gap: 1rem;
   width: 100%;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 .language-selection label {
   width: 30%;
   text-align: left;
   font-family: inherit;
   font-weight: 1000;
-  font-size: 1.25em;
+  font-size: 1.25rem;
 }
 .language-selection select {
   width: 70%;
   text-align: left;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 1.25rem;
   background-color: #FFFFFF;
 }
 
 .textarea {
-  height: 10em;
+  height: 10rem;
   width: 100%;
   font-family: inherit;
   font-size: inherit;
   box-sizing: border-box;
 }
 
+.error-message {
+  color: #FF0000;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .submit-area {
-  margin-bottom: 2em;
+  margin-bottom: 1rem;
 }
 .submit-area button {
   font-family: inherit;
   font-size: inherit;
   font-weight: 700;
-  padding: 0.5em;
-  padding-left: 2em;
-  padding-right: 2em;
-  margin-top: 1em;
-}
-
-.error-message {
-  color: #FF0000;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
